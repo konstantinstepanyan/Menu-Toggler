@@ -1,0 +1,745 @@
+$columns: 12;
+$atom: (100% / $columns);
+
+$break_lg: 1100px;
+$break_ipadPro: 1024px;
+$break_md: 960px;
+$break_sm: 780px;
+$break_ipad: 768px;
+$break_xs: 560px;
+$break_iphone8Plus: 414px;
+$break_iphone8: 375px;
+$break_galaxyS5: 360px;
+$break_iphoneSE: 320px;
+
+$offset: 30px;
+$offset_lg: $offset;
+$offset_ipadPro: $offset;
+$offset_md: $offset;
+$offset_sm: $offset;
+$offset_ipad: $offset;
+$offset_xs: $offset;
+$offset_iphone8Plus: $offset;
+$offset_iphone8: $offset;
+$offset_galaxyS5: $offset;
+$offset_iphoneSE: $offset;
+
+$offset_one_side: ($offset / 2);
+$offset_lg_one_side: ($offset_lg / 2);
+$offset_ipadPro_one_side: ($offset_ipadPro / 2);
+$offset_md_one_side: ($offset_md / 2);
+$offset_sm_one_side: ($offset_sm / 2);
+$offset_ipad_one_side: ($offset_ipad / 2);
+$offset_xs_one_side: ($offset_xs / 2);
+$offset_iphone8Plus_one_side: ($offset_iphone8Plus / 2);
+$offset_iphone8_one_side: ($offset_iphone8 / 2);
+$offset_galaxyS5_one_side: ($offset_galaxyS5 / 2);
+$offset_iphoneSE_one_side: ($offset_iphoneSE / 2);
+
+$fields: 30px;
+$fields_sm: 15px;
+
+@mixin wrapper-full(){
+    padding-left: $fields;
+    padding-right: $fields;
+
+    @include sm-block(){
+        padding-left: $fields_sm;
+        padding-right: $fields_sm;
+    }
+}
+
+@mixin row-offsets(){
+    margin-left: ($offset_one_side * -1);
+    margin-right: ($offset_one_side * -1);
+}
+
+@mixin col-offsets($type){
+    #{$type}-left: $offset_one_side;
+    #{$type}-right: $offset_one_side;
+}
+
+@mixin wrapper(){
+    max-width: 1200px;
+    margin: 0 auto;
+    @include wrapper-full();
+}
+
+@mixin row-flex(){
+    display: flex;
+    flex-wrap: wrap;
+    @include row-offsets();
+}
+
+@mixin row-float(){
+    @include row-offsets();
+    @include clearfix();
+}
+
+@mixin row-ib(){
+    @include row-offsets();
+}
+
+@mixin col(){
+    box-sizing: border-box;
+    word-wrap: break-word;
+    @include col-offsets(margin);
+}
+
+@mixin col-float(){
+    float: left;
+}
+
+@mixin col-ib(){
+    display: inline-block;
+    vertical-align: top;
+}
+
+@mixin col-padding(){
+    word-wrap: break-word;
+    @include col-offsets(padding);
+}
+
+@mixin size($n){
+    $val: 100% / $columns * $n;
+    width: #{calc(#{$val} - #{$offset})};
+}
+
+@mixin size-lg($n){
+    $val: 100% / $columns * $n;
+    @include lg(width, #{calc(#{$val} - #{$offset_lg})});
+}
+
+@mixin size-ipadPro($n){
+    $val: 100% / $columns * $n;
+    @include ipadPro(width, #{calc(#{$val} - #{$offset_ipadPro})});
+}
+
+@mixin size-md($n){
+    $val: 100% / $columns * $n;
+    @include md(width, #{calc(#{$val} - #{$offset_md})});
+}
+
+@mixin size-sm($n){
+    $val: 100% / $columns * $n;
+    @include sm(width, #{calc(#{$val} - #{$offset_sm})});
+}
+
+@mixin size-ipad($n){
+    $val: 100% / $columns * $n;
+    @include ipad(width, #{calc(#{$val} - #{$offset_ipad})});
+}
+
+@mixin size-xs($n){
+    $val: 100% / $columns * $n;
+    @include xs(width, #{calc(#{$val} - #{$offset_xs})});
+}
+
+@mixin size-iphone8Plus($n){
+    $val: 100% / $columns * $n;
+    @include iphone8Plus(width, #{calc(#{$val} - #{$offset_iphone8Plus})});
+}
+
+@mixin size-iphone8($n){
+    $val: 100% / $columns * $n;
+    @include iphone8(width, #{calc(#{$val} - #{$offset_iphone8})});
+}
+
+@mixin size-galaxyS5($n){
+    $val: 100% / $columns * $n;
+    @include galaxyS5(width, #{calc(#{$val} - #{$offset_galaxyS5})});
+}
+
+@mixin size-iphoneSE($n){
+    $val: 100% / $columns * $n;
+    @include iphoneSE(width, #{calc(#{$val} - #{$offset_iphoneSE})});
+}
+
+@mixin shift($n){
+    $val: 100% / $columns * $n;
+    margin-left: #{calc(#{$val} + #{$offset_one_side})};
+    margin-right: #{calc(#{$val} + #{$offset_one_side})};
+}
+
+@mixin shift-left($n){
+    $val: 100% / $columns * $n;
+    margin-left: #{calc(#{$val} + #{$offset_one_side})};
+}
+
+@mixin shift-right($n){
+    $val: 100% / $columns * $n;
+    margin-right: #{calc(#{$val} + #{$offset_one_side})};
+}
+
+@mixin shift-padding($n){
+    $val: 100% / $columns * $n;
+    padding-left: #{calc(#{$val} + #{$offset_one_side})};
+    padding-right: #{calc(#{$val} + #{$offset_one_side})};
+}
+
+@mixin shift-padding-left($n){
+    $val: 100% / $columns * $n;
+    padding-left: #{calc(#{$val} + #{$offset_one_side})};
+}
+
+@mixin shift-padding-right($n){
+    $val: 100% / $columns * $n;
+    padding-right: #{calc(#{$val} + #{$offset_one_side})};
+}
+
+@mixin shift-lg($n){
+    $val: 100% / $columns * $n;
+    @include lg(margin-left, #{calc(#{$val} + #{$offset_lg_one_side})});
+    @include lg(margin-right, #{calc(#{$val} + #{$offset_lg_one_side})});
+}
+
+@mixin shift-lg-left($n){
+    $val: 100% / $columns * $n;
+    @include lg(margin-left, #{calc(#{$val} + #{$offset_lg_one_side})});
+}
+
+@mixin shift-lg-right($n){
+    $val: 100% / $columns * $n;
+    @include lg(margin-right, #{calc(#{$val} + #{$offset_lg_one_side})});
+}
+
+@mixin shift-lg-padding($n){
+    $val: 100% / $columns * $n;
+    @include lg(padding-left, #{calc(#{$val} + #{$offset_lg_one_side})});
+    @include lg(padding-right, #{calc(#{$val} + #{$offset_lg_one_side})});
+}
+
+@mixin shift-lg-padding-left($n){
+    $val: 100% / $columns * $n;
+    @include lg(padding-left, #{calc(#{$val} + #{$offset_lg_one_side})});
+}
+
+@mixin shift-lg-padding-right($n){
+    $val: 100% / $columns * $n;
+    @include lg(padding-right, #{calc(#{$val} + #{$offset_lg_one_side})});
+}
+
+@mixin shift-ipadPro($n){
+    $val: 100% / $columns * $n;
+    @include ipadPro(margin-left, #{calc(#{$val} + #{$offset_ipadPro_one_side})});
+    @include ipadPro(margin-right, #{calc(#{$val} + #{$offset_ipadPro_one_side})});
+}
+
+@mixin shift-ipadPro-left($n){
+    $val: 100% / $columns * $n;
+    @include ipadPro(margin-left, #{calc(#{$val} + #{$offset_ipadPro_one_side})});
+}
+
+@mixin shift-ipadPro-right($n){
+    $val: 100% / $columns * $n;
+    @include ipadPro(margin-right, #{calc(#{$val} + #{$offset_ipadPro_one_side})});
+}
+
+@mixin shift-ipadPro-padding($n){
+    $val: 100% / $columns * $n;
+    @include ipadPro(padding-left, #{calc(#{$val} + #{$offset_ipadPro_one_side})});
+    @include ipadPro(padding-right, #{calc(#{$val} + #{$offset_ipadPro_one_side})});
+}
+
+@mixin shift-ipadPro-padding-left($n){
+    $val: 100% / $columns * $n;
+    @include ipadPro(padding-left, #{calc(#{$val} + #{$offset_ipadPro_one_side})});
+}
+
+@mixin shift-ipadPro-padding-right($n){
+    $val: 100% / $columns * $n;
+    @include ipadPro(padding-right, #{calc(#{$val} + #{$offset_ipadPro_one_side})});
+}
+
+@mixin shift-md($n){
+    $val: 100% / $columns * $n;
+    @include md(margin-left, #{calc(#{$val} + #{$offset_md_one_side})});
+    @include md(margin-right, #{calc(#{$val} + #{$offset_md_one_side})});
+}
+
+@mixin shift-md-left($n){
+    $val: 100% / $columns * $n;
+    @include md(margin-left, #{calc(#{$val} + #{$offset_md_one_side})});
+}
+
+@mixin shift-md-right($n){
+    $val: 100% / $columns * $n;
+    @include md(margin-right, #{calc(#{$val} + #{$offset_md_one_side})});
+}
+
+@mixin shift-md-padding($n){
+    $val: 100% / $columns * $n;
+    @include md(padding-left, #{calc(#{$val} + #{$offset_md_one_side})});
+    @include md(padding-right, #{calc(#{$val} + #{$offset_md_one_side})});
+}
+
+@mixin shift-md-padding-left($n){
+    $val: 100% / $columns * $n;
+    @include md(padding-left, #{calc(#{$val} + #{$offset_md_one_side})});
+}
+
+@mixin shift-md-padding-right($n){
+    $val: 100% / $columns * $n;
+    @include md(padding-right, #{calc(#{$val} + #{$offset_md_one_side})});
+}
+
+@mixin shift-sm($n){
+    $val: 100% / $columns * $n;
+    @include sm(margin-left, #{calc(#{$val} + #{$offset_sm_one_side})});
+    @include sm(margin-right, #{calc(#{$val} + #{$offset_sm_one_side})});
+}
+
+@mixin shift-sm-left($n){
+    $val: 100% / $columns * $n;
+    @include sm(margin-left, #{calc(#{$val} + #{$offset_sm_one_side})});
+}
+
+@mixin shift-sm-right($n){
+    $val: 100% / $columns * $n;
+    @include sm(margin-right, #{calc(#{$val} + #{$offset_sm_one_side})});
+}
+
+@mixin shift-sm-padding($n){
+    $val: 100% / $columns * $n;
+    @include sm(padding-left, #{calc(#{$val} + #{$offset_sm_one_side})});
+    @include sm(padding-right, #{calc(#{$val} + #{$offset_sm_one_side})});
+}
+
+@mixin shift-sm-padding-left($n){
+    $val: 100% / $columns * $n;
+    @include sm(padding-left, #{calc(#{$val} + #{$offset_sm_one_side})});
+}
+
+@mixin shift-sm-padding-right($n){
+    $val: 100% / $columns * $n;
+    @include sm(padding-right, #{calc(#{$val} + #{$offset_sm_one_side})});
+}
+
+@mixin shift-ipad($n){
+    $val: 100% / $columns * $n;
+    @include ipad(margin-left, #{calc(#{$val} + #{$offset_ipad_one_side})});
+    @include ipad(margin-right, #{calc(#{$val} + #{$offset_ipad_one_side})});
+}
+
+@mixin shift-ipad-left($n){
+    $val: 100% / $columns * $n;
+    @include ipad(margin-left, #{calc(#{$val} + #{$offset_ipad_one_side})});
+}
+
+@mixin shift-ipad-right($n){
+    $val: 100% / $columns * $n;
+    @include ipad(margin-right, #{calc(#{$val} + #{$offset_ipad_one_side})});
+}
+
+@mixin shift-ipad-padding($n){
+    $val: 100% / $columns * $n;
+    @include ipad(padding-left, #{calc(#{$val} + #{$offset_ipad_one_side})});
+    @include ipad(padding-right, #{calc(#{$val} + #{$offset_ipad_one_side})});
+}
+
+@mixin shift-ipad-padding-left($n){
+    $val: 100% / $columns * $n;
+    @include ipad(padding-left, #{calc(#{$val} + #{$offset_ipad_one_side})});
+}
+
+@mixin shift-ipad-padding-right($n){
+    $val: 100% / $columns * $n;
+    @include ipad(padding-right, #{calc(#{$val} + #{$offset_ipad_one_side})});
+}
+
+@mixin shift-xs($n){
+    $val: 100% / $columns * $n;
+    @include xs(margin-left, #{calc(#{$val} + #{$offset_xs_one_side})});
+    @include xs(margin-right, #{calc(#{$val} + #{$offset_xs_one_side})});
+}
+
+@mixin shift-xs-left($n){
+    $val: 100% / $columns * $n;
+    @include xs(margin-left, #{calc(#{$val} + #{$offset_xs_one_side})});
+}
+
+@mixin shift-xs-right($n){
+    $val: 100% / $columns * $n;
+    @include xs(margin-right, #{calc(#{$val} + #{$offset_xs_one_side})});
+}
+
+@mixin shift-xs-padding($n){
+    $val: 100% / $columns * $n;
+    @include xs(padding-left, #{calc(#{$val} + #{$offset_xs_one_side})});
+    @include xs(padding-right, #{calc(#{$val} + #{$offset_xs_one_side})});
+}
+
+@mixin shift-xs-padding-left($n){
+    $val: 100% / $columns * $n;
+    @include xs(padding-left, #{calc(#{$val} + #{$offset_xs_one_side})});
+}
+
+@mixin shift-xs-padding-right($n){
+    $val: 100% / $columns * $n;
+    @include xs(padding-right, #{calc(#{$val} + #{$offset_xs_one_side})});
+}
+
+@mixin shift-iphone8Plus($n){
+    $val: 100% / $columns * $n;
+    @include iphone8Plus(margin-left, #{calc(#{$val} + #{$offset_iphone8Plus_one_side})});
+    @include iphone8Plus(margin-right, #{calc(#{$val} + #{$offset_iphone8Plus_one_side})});
+}
+
+@mixin shift-iphone8Plus-left($n){
+    $val: 100% / $columns * $n;
+    @include iphone8Plus(margin-left, #{calc(#{$val} + #{$offset_iphone8Plus_one_side})});
+}
+
+@mixin shift-iphone8Plus-right($n){
+    $val: 100% / $columns * $n;
+    @include iphone8Plus(margin-right, #{calc(#{$val} + #{$offset_iphone8Plus_one_side})});
+}
+
+@mixin shift-iphone8Plus-padding($n){
+    $val: 100% / $columns * $n;
+    @include iphone8Plus(padding-left, #{calc(#{$val} + #{$offset_iphone8Plus_one_side})});
+    @include iphone8Plus(padding-right, #{calc(#{$val} + #{$offset_iphone8Plus_one_side})});
+}
+
+@mixin shift-iphone8Plus-padding-left($n){
+    $val: 100% / $columns * $n;
+    @include iphone8Plus(padding-left, #{calc(#{$val} + #{$offset_iphone8Plus_one_side})});
+}
+
+@mixin shift-iphone8Plus-padding-right($n){
+    $val: 100% / $columns * $n;
+    @include iphone8Plus(padding-right, #{calc(#{$val} + #{$offset_iphone8Plus_one_side})});
+}
+
+@mixin shift-iphone8($n){
+    $val: 100% / $columns * $n;
+    @include iphone8(margin-left, #{calc(#{$val} + #{$offset_iphone8_one_side})});
+    @include iphone8(margin-right, #{calc(#{$val} + #{$offset_iphone8_one_side})});
+}
+
+@mixin shift-iphone8-left($n){
+    $val: 100% / $columns * $n;
+    @include iphone8(margin-left, #{calc(#{$val} + #{$offset_iphone8_one_side})});
+}
+
+@mixin shift-iphone8-right($n){
+    $val: 100% / $columns * $n;
+    @include iphone8(margin-right, #{calc(#{$val} + #{$offset_iphone8_one_side})});
+}
+
+@mixin shift-iphone8-padding($n){
+    $val: 100% / $columns * $n;
+    @include iphone8(padding-left, #{calc(#{$val} + #{$offset_iphone8_one_side})});
+    @include iphone8(padding-right, #{calc(#{$val} + #{$offset_iphone8_one_side})});
+}
+
+@mixin shift-iphone8-padding-left($n){
+    $val: 100% / $columns * $n;
+    @include iphone8(padding-left, #{calc(#{$val} + #{$offset_iphone8_one_side})});
+}
+
+@mixin shift-iphone8-padding-right($n){
+    $val: 100% / $columns * $n;
+    @include iphone8(padding-right, #{calc(#{$val} + #{$offset_iphone8_one_side})});
+}
+
+@mixin shift-galaxyS5($n){
+    $val: 100% / $columns * $n;
+    @include galaxyS5(margin-left, #{calc(#{$val} + #{$offset_galaxyS5_one_side})});
+    @include galaxyS5(margin-right, #{calc(#{$val} + #{$offset_galaxyS5_one_side})});
+}
+
+@mixin shift-galaxyS5-left($n){
+    $val: 100% / $columns * $n;
+    @include galaxyS5(margin-left, #{calc(#{$val} + #{$offset_galaxyS5_one_side})});
+}
+
+@mixin shift-galaxyS5-right($n){
+    $val: 100% / $columns * $n;
+    @include galaxyS5(margin-right, #{calc(#{$val} + #{$offset_galaxyS5_one_side})});
+}
+
+@mixin shift-galaxyS5-padding($n){
+    $val: 100% / $columns * $n;
+    @include galaxyS5(padding-left, #{calc(#{$val} + #{$offset_galaxyS5_one_side})});
+    @include galaxyS5(padding-right, #{calc(#{$val} + #{$offset_galaxyS5_one_side})});
+}
+
+@mixin shift-galaxyS5-padding-left($n){
+    $val: 100% / $columns * $n;
+    @include galaxyS5(padding-left, #{calc(#{$val} + #{$offset_galaxyS5_one_side})});
+}
+
+@mixin shift-galaxyS5-padding-right($n){
+    $val: 100% / $columns * $n;
+    @include galaxyS5(padding-right, #{calc(#{$val} + #{$offset_galaxyS5_one_side})});
+}
+
+@mixin shift-iphoneSE($n){
+    $val: 100% / $columns * $n;
+    @include iphoneSE(margin-left, #{calc(#{$val} + #{$offset_iphoneSE_one_side})});
+    @include iphoneSE(margin-right, #{calc(#{$val} + #{$offset_iphoneSE_one_side})});
+}
+
+@mixin shift-iphoneSE-left($n){
+    $val: 100% / $columns * $n;
+    @include iphoneSE(margin-left, #{calc(#{$val} + #{$offset_iphoneSE_one_side})});
+}
+
+@mixin shift-iphoneSE-right($n){
+    $val: 100% / $columns * $n;
+    @include iphoneSE(margin-right, #{calc(#{$val} + #{$offset_iphoneSE_one_side})});
+}
+
+@mixin shift-iphoneSE-padding($n){
+    $val: 100% / $columns * $n;
+    @include iphoneSE(padding-left, #{calc(#{$val} + #{$offset_iphoneSE_one_side})});
+    @include iphoneSE(padding-right, #{calc(#{$val} + #{$offset_iphoneSE_one_side})});
+}
+
+@mixin shift-iphoneSE-padding-left($n){
+    $val: 100% / $columns * $n;
+    @include iphoneSE(padding-left, #{calc(#{$val} + #{$offset_iphoneSE_one_side})});
+}
+
+@mixin shift-iphoneSE-padding-right($n){
+    $val: 100% / $columns * $n;
+    @include iphoneSE(padding-right, #{calc(#{$val} + #{$offset_iphoneSE_one_side})});
+}
+
+@mixin lg($name, $value){
+    @media screen and (max-width: $break_lg){
+        #{$name}: $value;
+    }
+}
+
+@mixin lg-block(){
+    @media screen and (max-width: $break_lg){
+        @content;
+    }
+}
+
+@mixin ipadPro($name, $value){
+    @media screen and (max-width: $break_ipadPro){
+        #{$name}: $value;
+    }
+}
+
+@mixin ipadPro-block(){
+    @media screen and (max-width: $break_ipadPro){
+        @content;
+    }
+}
+
+@mixin md($name, $value){
+    @media screen and (max-width: $break_md){
+        #{$name}: $value;
+    }
+}
+
+@mixin md-block(){
+    @media screen and (max-width: $break_md){
+        @content;
+    }
+}
+
+@mixin sm($name, $value){
+    @media screen and (max-width: $break_sm){
+        #{$name}: $value;
+    }
+}
+
+@mixin sm-block(){
+    @media screen and (max-width: $break_sm){
+        @content;
+    }
+}
+
+@mixin ipad($name, $value){
+    @media screen and (max-width: $break_ipad){
+        #{$name}: $value;
+    }
+}
+
+@mixin ipad-block(){
+    @media screen and (max-width: $break_ipad){
+        @content;
+    }
+}
+
+@mixin xs($name, $value){
+    @media screen and (max-width: $break_xs){
+        #{$name}: $value;
+    }
+}
+
+@mixin xs-block(){
+    @media screen and (max-width: $break_xs){
+        @content;
+    }
+}
+
+@mixin iphone8Plus($name, $value){
+    @media screen and (max-width: $break_iphone8Plus){
+        #{$name}: $value;
+    }
+}
+
+@mixin iphone8Plus-block(){
+    @media screen and (max-width: $break_iphone8Plus){
+        @content;
+    }
+}
+
+@mixin iphone8($name, $value){
+    @media screen and (max-width: $break_iphone8){
+        #{$name}: $value;
+    }
+}
+
+@mixin iphone8-block(){
+    @media screen and (max-width: $break_iphone8){
+        @content;
+    }
+}
+
+@mixin galaxyS5($name, $value){
+    @media screen and (max-width: $break_galaxyS5){
+        #{$name}: $value;
+    }
+}
+
+@mixin galaxyS5-block(){
+    @media screen and (max-width: $break_galaxyS5){
+        @content;
+    }
+}
+
+@mixin iphoneSE($name, $value){
+    @media screen and (max-width: $break_iphoneSE){
+        #{$name}: $value;
+    }
+}
+
+@mixin iphoneSE-block(){
+    @media screen and (max-width: $break_iphoneSE){
+        @content;
+    }
+}
+
+@mixin from($min_width){
+    @media screen and (min-width: $min_width){
+        @content;
+    }
+}
+
+@mixin to($max_width){
+    @media screen and (max-width: $max_width){
+        @content;
+    }
+}
+
+@mixin from-to($min_width, $max_width){
+    @media screen and (min-width: $min_width) and (max-width: $max_width){
+        @content;
+    }
+}
+
+@mixin u-row-flex($offset){
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: ($offset / -2);
+    margin-right: ($offset / -2);
+}
+
+@mixin u-col($offset){
+    box-sizing: border-box;
+    word-wrap: break-word;
+    margin-left: ($offset / 2);
+    margin-right: ($offset / 2);
+}
+
+@mixin u-size($n, $columns, $offset){
+    width: #{calc(100% / #{$columns} * #{$n} - #{$offset})};
+}
+
+@mixin reset(){
+    body,div,dl,dt,dd,ul,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,input,textarea,p,blockquote,th,td{
+        margin: 0;
+        padding: 0;
+    }
+    table{
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+    fieldset,img,abbr{
+        border: 0;
+    }
+    address,caption,cite,code,dfn,em,strong,th,var{
+        font-style: normal;
+        font-weight: normal;
+    }
+    ul li{
+        list-style: none;
+    }
+    caption,th{
+        text-align: left;
+    }
+    h1,h2,h3,h4,h5,h6{
+        font-size: 100%;
+        font-weight: normal;
+    }
+    sup{
+        vertical-align: text-top;
+    }
+    sub{
+        vertical-align: text-bottom;
+    }
+    input,textarea,select{
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+    }
+    legend{
+        color: #000;
+    }
+    article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,main{
+        display: block;
+    }
+    img{
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+@mixin debug($background, $outline){
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+    
+    > div{
+        height: inherit;
+        @include wrapper();
+        
+        > div{
+            height: inherit;
+            @include row-flex();
+            
+            > div{
+                @include col();
+                @include size(1);
+                height: inherit;
+                outline: $outline;
+                background: $background;
+            }
+        }
+    }
+}
+
+@mixin clearfix(){
+    &::after{
+        display: block;
+        content: "";
+        clear: both;
+    }
+}

@@ -1,0 +1,234 @@
+.nav {
+    position: relative;
+    z-index: 1;
+    max-width: 90%;
+    max-height: 15%;
+    margin: auto;
+    position: relative;
+    top: 16px;
+    color: #fff;
+    display: grid;
+    align-items: center;
+    grid-template-areas: 'logo links-wrapper';
+    grid-template-columns: 1fr 4fr;
+
+    .links-wrapper {
+        display: grid;
+        grid-template-areas: '. companies . applicants . vacancies. links';
+        grid-template-columns: minmax(15px, 150px) 86px minmax(0px, 60px) 100px minmax(0px, 60px) 77px minmax(0px, 355px) minmax(190px, 250px);
+        justify-self: end;
+        grid-area: 'links-wrapper';
+
+
+        .links {
+            grid-area: links;
+            display: grid;
+            grid-template-areas: 'inst mail number';
+            grid-template-columns: auto auto auto;
+
+            .inst {
+                grid-area: inst;
+            }
+
+            .mail {
+                grid-area: mail;
+            }
+
+            .number {
+                color: #000;
+                font-size: 1.55rem;
+                grid-area: number;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+            }
+        }
+
+        .companies {
+            grid-area: companies;
+        }
+
+        .applicants {
+            grid-area: applicants;
+        }
+
+        .vacancies {
+            grid-area: vacancies;
+        }
+
+
+    }
+
+    .burger {
+        grid-area: burger;
+    }
+
+    .menu_show {
+        height: 140px;
+        opacity: 1;
+    }
+
+    &__item-rounded {
+        padding: $paddingOfWhiteNavElems;
+        max-height: $heightOfWhiteNavElems;
+        border-radius: 200px;
+    }
+
+
+    .img-wrapper {
+        display: block;
+        max-width: 21px;
+
+        &__img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+
+    .logo {
+        grid-area: logo;
+        max-width: 320px;
+        font-size: 1.5rem;
+        display: grid;
+        grid-template-columns: minmax(71px, 63px) 14px minmax(90px, 194px);
+        grid-template-areas:
+            'logo-img . title'
+            'logo-img . desc';
+
+        &__img {
+            grid-area: logo-img;
+            height: 100%;
+        }
+
+        &__title {
+            grid-area: title;
+            font-family: 'Gilroy-Medium';
+            font-size: 3rem;
+        }
+
+        &__description {
+            grid-area: desc;
+            font-family: 'Gilroy-Light';
+            font-size: 1rem;
+        }
+
+        &:hover {
+            color: #fff;
+        }
+    }
+
+
+
+    &__item {
+        font-size: 1.7rem;
+        color: #fff;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all .2s linear;
+
+        &:hover:not(.number) {
+            color: #ddd;
+        }
+
+        &_white {
+            background: #fff;
+
+            &:hover {
+                box-shadow: 0 0 12px #fff;
+            }
+        }
+    }
+}
+
+.nav-footer {
+    position: relative;
+    top: -10px;
+    color: #777;
+
+    .logo {
+        &:hover {
+            color: #777;
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .nav {
+        max-width: 98%;
+
+        .logo {
+            grid-template-columns: minmax(58px, 66px) 0 minmax(99px, 140px);
+        }
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .nav {
+        .logo {
+            grid-template-columns: minmax(30px, 41px) 5px minmax(86px, 110px);
+        }
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .nav {
+        grid-template-areas: 'logo burger';
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 35px;
+
+        &__item {
+            font-size: 2.3rem;
+        }
+
+        .links-wrapper {
+            position: absolute;
+            top: 50px;
+            right: 5px;
+
+
+            grid-template-areas:
+                'companies'
+                '.'
+                'applicants'
+                '.'
+                'vacancies'
+                '.'
+                'links';
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 10px auto 10px auto 10px;
+            align-self: self-start;
+
+
+            .links {
+                grid-template-areas:
+                    'inst'
+                    '.'
+                    'mail'
+                    '.'
+                    'number';
+                grid-template-rows: auto 10px auto 10px auto;
+
+
+                .inst,
+                .mail {
+                    max-width: 15px;
+                    max-height: 15px;
+                }
+
+                .number {
+                    height: 32px;
+                    font-size: 1.6rem;
+                }
+            }
+
+        }
+
+        .logo {
+            width: 100%;
+        }
+
+    }
+}
