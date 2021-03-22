@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    alert(1);
+    
     class MenuToggler {
         constructor(data) {
             this.menuTriggerSelector = data.menuTriggerSelector;
@@ -48,27 +50,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         }
 
-        toggle() {
+        addTransition (element, property, value) {
 
-
-            const addTransition = () => {
-
-                function setVendor(element, property, value) {
                     element.style["webkit" + property] = value;
                     element.style["moz" + property] = value;
                     element.style["ms" + property] = value;
                     element.style["o" + property] = value;
                     element.style[property] = value;
-                }
-
-
-                setVendor(this.menu, 'Transition', `opacity ${this.transitionTime} ${this.transitionType}`);
+         
             }
+        
+        toggle() {
+
 
             if (this.type == 'appear' && !this.isChanging) {
 
                 if (this.menu.style.opacity == '1') {
-                    addTransition();
+                    this.addTransition(this.menu, 'Transition', `opacity ${this.transitionTime} ${this.transitionType}`);
 
                     if (this.menuTrigger.classList.contains('burger')) {
                         this.menuTrigger.classList.remove('burger_close');
@@ -91,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.state = 'show';
                     this.menu.style.display = this.menuDisplay;
                     setTimeout(() => {
-                        addTransition();
+                        this.addTransition(this.menu, 'Transition', `opacity ${this.transitionTime} ${this.transitionType}`);
                         this.menu.style.height = 'initial';
                         this.menu.style.opacity = '1';
                         this.isChanging = true
